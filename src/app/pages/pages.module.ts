@@ -7,7 +7,20 @@ import { StockRegisteringPageComponent } from './components/stock-registering-pa
 import { PurchaseHistoryListingPageComponent } from './components/purchase-history-listing-page/purchase-history-listing-page.component';
 
 @NgModule({
-  declarations: [SignInPageComponent, ProductListingPageComponent, ProductRegisteringPageComponent, StockRegisteringPageComponent, PurchaseHistoryListingPageComponent],
+  declarations: [
+    SignInPageComponent,
+    ProductListingPageComponent,
+    ProductRegisteringPageComponent,
+    StockRegisteringPageComponent,
+    PurchaseHistoryListingPageComponent,
+  ],
   imports: [CommonModule],
+  exports: [
+    SignInPageComponent,
+    ProductListingPageComponent,
+    ProductRegisteringPageComponent,
+    StockRegisteringPageComponent,
+    PurchaseHistoryListingPageComponent,
+  ],
 })
 export class PagesModule {}
