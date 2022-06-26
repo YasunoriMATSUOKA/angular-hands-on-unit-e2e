@@ -5,6 +5,8 @@ import { ProductListingPageComponent } from './components/product-listing-page/p
 import { ProductRegisteringPageComponent } from './components/product-registering-page/product-registering-page.component';
 import { StockRegisteringPageComponent } from './components/stock-registering-page/stock-registering-page.component';
 import { PurchaseHistoryListingPageComponent } from './components/purchase-history-listing-page/purchase-history-listing-page.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxTranslateModule } from '../ngx-translate/ngx-translate.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,7 @@ import { PurchaseHistoryListingPageComponent } from './components/purchase-histo
     StockRegisteringPageComponent,
     PurchaseHistoryListingPageComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule, NgxTranslateModule],
   exports: [
     SignInPageComponent,
     ProductListingPageComponent,
