@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
+import { LoadingService } from 'src/app/core/services/loading.service';
 import { RoutingService } from 'src/app/core/services/routing.service';
 import { UrlConst } from '../../constants/url-const';
 import { SignInRequestDto } from '../../models/dtos/requests/sign-in-request-dto';
@@ -33,7 +34,8 @@ export class SignInPageComponent implements OnInit {
     public translateService: TranslateService,
     private formBuilder: FormBuilder,
     private accountService: AccountService,
-    private routingService: RoutingService
+    private routingService: RoutingService,
+    private loadingService: LoadingService
   ) {}
 
   ngOnInit(): void {
@@ -46,14 +48,19 @@ export class SignInPageComponent implements OnInit {
   }
 
   private signIn(signInRequestDto: SignInRequestDto) {
+    this.loadingService.startLoading();
+
     const signInResponseDto$: Observable<SignInResponseDto | undefined> =
       this.accountService.signIn(signInRequestDto);
     signInResponseDto$.subscribe((signInResponseDto) => {
       if (!signInResponseDto) {
+        this.loadingService.stopLoading();
         throw Error('Failed to sign in!');
       }
       this.setUpUserAccount(signInResponseDto);
       this.routingService.navigate(UrlConst.PATH_PRODUCT_LISTING);
+
+      this.loadingService.stopLoading();
     });
   }
 
