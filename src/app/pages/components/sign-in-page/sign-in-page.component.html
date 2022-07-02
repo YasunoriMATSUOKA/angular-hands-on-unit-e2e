@@ -42,6 +42,7 @@
         class="flat-button"
         type="button"
         [disabled]="!signInForm.valid"
+        (click)="clickSignInButton()"
       >
         {{ "signInPage.signInButton" | translate }}
       </button>
