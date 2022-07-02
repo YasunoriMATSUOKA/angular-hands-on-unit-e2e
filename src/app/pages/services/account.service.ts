@@ -1,10 +1,6 @@
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpErrorResponse,
-} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { ErrorMessagingService } from 'src/app/core/services/error-messaging.service';
 import { SessionStorageService } from 'src/app/core/services/session-storage.service';
 import { ApiConst } from '../constants/api-const';
@@ -37,7 +33,6 @@ export class AccountService {
       })
       .pipe(
         catchError((error) => {
-          console.error(error);
           this.errorMessagingService.setupPageErrorMessageFromResponse(error);
           return of(undefined);
         })
