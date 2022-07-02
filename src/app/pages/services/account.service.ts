@@ -1,6 +1,11 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpErrorResponse,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
+import { ErrorMessagingService } from 'src/app/core/services/error-messaging.service';
 import { SessionStorageService } from 'src/app/core/services/session-storage.service';
 import { ApiConst } from '../constants/api-const';
 import { AppConst } from '../constants/app-const';
@@ -12,7 +17,10 @@ import { User } from '../models/user';
   providedIn: 'root',
 })
 export class AccountService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private errorMessagingService: ErrorMessagingService
+  ) {}
 
   signIn(
     signInRequestDto: SignInRequestDto
@@ -30,6 +38,7 @@ export class AccountService {
       .pipe(
         catchError((error) => {
           console.error(error);
+          this.errorMessagingService.setupPageErrorMessageFromResponse(error);
           return of(undefined);
         })
       );

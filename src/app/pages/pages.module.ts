@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxTranslateModule } from '../ngx-translate/ngx-translate.module';
 import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NgxTranslateModule,
     MaterialModule,
     ReactiveFormsModule,
+    CoreModule,
   ],
   exports: [
     SignInPageComponent,

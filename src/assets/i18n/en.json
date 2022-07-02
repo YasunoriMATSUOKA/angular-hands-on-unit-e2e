@@ -221,6 +221,9 @@
       "outOfStockException": "Out of stock.",
       "internalServerError": "An error occurred in the server.",
       "GenericError": "Communication with server failed."
+    },
+    "common": {
+      "unknown": "Unknown error occurred."
     }
   }
 }

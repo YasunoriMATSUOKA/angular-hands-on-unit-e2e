@@ -221,6 +221,9 @@
       "outOfStockException": "在庫が不足しています。",
       "internalServerError": "サーバ内でエラーが発生しました。",
       "GenericError": "サーバとの通信に失敗しました。"
+    },
+    "common": {
+      "unknown": "不明なエラーが発生しました。"
     }
   }
 }
