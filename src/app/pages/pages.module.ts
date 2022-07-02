@@ -7,6 +7,8 @@ import { StockRegisteringPageComponent } from './components/stock-registering-pa
 import { PurchaseHistoryListingPageComponent } from './components/purchase-history-listing-page/purchase-history-listing-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxTranslateModule } from '../ngx-translate/ngx-translate.module';
+import { MaterialModule } from '../material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,13 @@ import { NgxTranslateModule } from '../ngx-translate/ngx-translate.module';
     StockRegisteringPageComponent,
     PurchaseHistoryListingPageComponent,
   ],
-  imports: [CommonModule, HttpClientModule, NgxTranslateModule],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    NgxTranslateModule,
+    MaterialModule,
+    ReactiveFormsModule,
+  ],
   exports: [
     SignInPageComponent,
     ProductListingPageComponent,

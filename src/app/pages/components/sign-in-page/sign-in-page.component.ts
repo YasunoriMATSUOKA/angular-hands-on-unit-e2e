@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -7,7 +8,18 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./sign-in-page.component.scss'],
 })
 export class SignInPageComponent implements OnInit {
-  constructor(public translateService: TranslateService) {}
+  signInUserAccount = new FormControl<string>('', [Validators.required]);
+  signInUserPassword = new FormControl<string>('', [Validators.required]);
+
+  signInForm = this.formBuilder.group({
+    signInUserAccount: this.signInUserAccount,
+    signInUserPassword: this.signInUserPassword,
+  });
+
+  constructor(
+    public translateService: TranslateService,
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.setupLanguage();

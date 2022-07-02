@@ -18,7 +18,7 @@
   width: 440px;
   margin: 0 auto 0;
   padding: 0 5px;
-  background-color: #1B435D;
+  background-color: #1b435d;
 }
 
 .sign-in-title-wrapper p {
@@ -32,48 +32,25 @@
   text-align: center;
 }
 
-.sign-in-criteria-wrapper input[type=text],
-.sign-in-criteria-wrapper input[type=password] {
-  border-width: 0;
-  display: block;
-  width: 20rem;
-  margin: 50px auto 50px;
-}
-
-.sign-in-criteria-wrapper .button {
-  display: block;
-  padding: 10px 0;
-  margin: 50px auto 50px;
-  width: 200px;
-  border-radius: 2px;
-  background-color: #78BBE6;
-  color: #ffffff;
-  text-decoration: none;
-  text-align: center;
-  letter-spacing: 1px;
-  font-size: 1.2rem;
-}
-
-.sign-in-criteria-wrapper .button:hover {
-  opacity: 0.9;
-}
-
-/* .sign-in-criteria-wrapper .form-field {
+.sign-in-criteria-wrapper .form-field {
   margin: 20px auto 0;
   width: 200px;
 }
+
 .sign-in-page-wrapper .flat-button {
   margin: 50px auto 50px;
   width: 200px;
   border-radius: 2px;
-  background-color: #78BBE6;
+  background-color: #78bbe6;
   color: #ffffff;
   letter-spacing: 1px;
   font-size: 1.2rem;
 }
+
 .sign-in-page-wrapper .flat-button:hover {
   opacity: 0.8;
 }
+
 .sign-in-page-wrapper .flat-button:disabled {
   opacity: 0.4;
-} */
+}
