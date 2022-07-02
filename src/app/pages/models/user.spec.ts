@@ -1,6 +1,6 @@
 import { User, USER } from './user';
 
-describe('User', () => {
+xdescribe('User', () => {
   it('should create an instance', () => {
     expect(new User(USER)).toBeTruthy();
   });
