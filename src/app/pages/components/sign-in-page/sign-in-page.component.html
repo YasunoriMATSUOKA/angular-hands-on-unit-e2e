@@ -1,7 +1,7 @@
 <section class="sign-in-page-wrapper">
   <div class="sign-in-page">
     <div class="sign-in-title-wrapper">
-      <p>EXAPMLE SITE</p>
+      <p>EXAMPLE SITE</p>
     </div>
     <app-error-messaging></app-error-messaging>
     <div class="sign-in-criteria-wrapper">
@@ -15,7 +15,7 @@
             placeholder="{{ 'signInPage.userAccount' | translate }}"
           />
           <mat-error
-            class="validatrion-error"
+            class="validation-error"
             *ngIf="signInUserAccount.hasError('required')"
           >
             {{ "validationError.required" | translate }}
@@ -30,7 +30,7 @@
             placeholder="{{ 'signInPage.userPassword' | translate }}"
           />
           <mat-error
-            class="validatrion-error"
+            class="validation-error"
             *ngIf="signInUserPassword.hasError('required')"
           >
             {{ "validationError.required" | translate }}

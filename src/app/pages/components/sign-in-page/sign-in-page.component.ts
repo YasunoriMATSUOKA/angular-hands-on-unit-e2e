@@ -1,7 +1,7 @@
 import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { LoadingService } from 'src/app/core/services/loading.service';
 import { RoutingService } from 'src/app/core/services/routing.service';
 import { TitleI18nService } from 'src/app/shared/services/title-i18n.service';
@@ -30,6 +30,7 @@ export class SignInPageComponent implements OnInit, AfterViewChecked {
     signInUserAccount: this.signInUserAccount,
     signInUserPassword: this.signInUserPassword,
   });
+  subscriptions: Subscription[];
 
   constructor(
     public translateService: TranslateService,
@@ -38,7 +39,9 @@ export class SignInPageComponent implements OnInit, AfterViewChecked {
     private routingService: RoutingService,
     private loadingService: LoadingService,
     private titleI18nService: TitleI18nService
-  ) {}
+  ) {
+    this.subscriptions = [];
+  }
 
   ngOnInit(): void {
     this.setupLanguage();
@@ -46,6 +49,12 @@ export class SignInPageComponent implements OnInit, AfterViewChecked {
 
   ngAfterViewChecked(): void {
     this.titleI18nService.setTitle(UrlConst.PATH_SIGN_IN);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => {
+      subscription.unsubscribe();
+    });
   }
 
   clickSignInButton() {
@@ -58,16 +67,18 @@ export class SignInPageComponent implements OnInit, AfterViewChecked {
 
     const signInResponseDto$: Observable<SignInResponseDto | undefined> =
       this.accountService.signIn(signInRequestDto);
-    signInResponseDto$.subscribe((signInResponseDto) => {
-      if (!signInResponseDto) {
-        this.loadingService.stopLoading();
-        throw Error('Failed to sign in!');
-      }
-      this.setUpUserAccount(signInResponseDto);
-      this.routingService.navigate(UrlConst.PATH_PRODUCT_LISTING);
+    this.subscriptions.push(
+      signInResponseDto$.subscribe((signInResponseDto) => {
+        if (!signInResponseDto) {
+          this.loadingService.stopLoading();
+          throw Error('Failed to sign in!');
+        }
+        this.setUpUserAccount(signInResponseDto);
+        this.routingService.navigate(UrlConst.PATH_PRODUCT_LISTING);
 
-      this.loadingService.stopLoading();
-    });
+        this.loadingService.stopLoading();
+      })
+    );
   }
 
   private createSignInRequestDto(): SignInRequestDto {
